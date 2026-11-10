@@ -1,0 +1,20 @@
+# deployed from snakemake-workflows/dna-seq-varlociraptor at tag v6.11.4 (commit ed905978c61079b7abc024311ad63d884fa1ca36)
+from snakemake.utils import min_version
+
+
+min_version("6.10.0")
+
+
+configfile: "config/config.yaml"
+
+
+# declare snakemake-workflows/dna-seq-varlociraptor as a module
+module dna_seq_varlociraptor:
+    snakefile:
+        github("snakemake-workflows/dna-seq-varlociraptor", path="workflow/Snakefile", tag="v6.11.4")
+    config:
+        config
+
+
+# use all rules from snakemake-workflows/dna-seq-varlociraptor
+use rule * from dna_seq_varlociraptor
